@@ -3,6 +3,12 @@ services:
     build:
       context: .
       dockerfile: amd.dockerfile
+    volumes:
+      - ./models:/app/ComfyUI/models
+      - ./input:/app/ComfyUI/input
+      - ./output:/app/ComfyUI/output
+      - ./custom_nodes:/app/ComfyUI/custom_nodes
+      - ./web:/app/ComfyUI/web
     ports:
       - "7680:${PORT:-7680}"
     devices:
