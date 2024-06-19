@@ -1,0 +1,11 @@
+services:
+  comfyui:
+    build:
+      context: .
+      dockerfile: amd.dockerfile
+    ports:
+      - "7680:${PORT:-7680}"
+    devices:
+      - "/dev/dri:/dev/dri"
+      ## For AMD GPU
+      - "/dev/kfd:/dev/kfd"

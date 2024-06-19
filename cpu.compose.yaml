@@ -1,0 +1,9 @@
+services:
+  comfyui:
+    build: 
+      context: .
+      dockerfile: cpu.Dockerfile
+    ports:
+      - "7680:${PORT:-7680}"
+    devices:
+      - "/dev/dri:/dev/dri"

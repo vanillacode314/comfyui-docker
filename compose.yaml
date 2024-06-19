@@ -1,0 +1,15 @@
+services:
+  comfyui:
+    build: .
+    ports:
+      - "7680:${PORT:-7680}"
+
+    deploy:
+       resources:
+         reservations:
+           devices:
+             - driver: nvidia
+               count: all
+               capabilities: [gpu]
+    devices:
+      - "/dev/dri:/dev/dri"
