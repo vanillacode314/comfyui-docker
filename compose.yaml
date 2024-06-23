@@ -14,3 +14,4 @@ services:
                capabilities: [gpu]
     devices:
       - "/dev/dri:/dev/dri"
+    restart: unless-stopped

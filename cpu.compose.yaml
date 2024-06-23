@@ -9,3 +9,4 @@ services:
       - "7680:${PORT:-7680}"
     devices:
       - "/dev/dri:/dev/dri"
+    restart: unless-stopped
