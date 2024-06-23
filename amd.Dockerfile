@@ -8,7 +8,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     apt install -y git aria2 python3 python3-pip python3-venv
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI /app/ComfyUI && \
-    git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes
+    git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     python3 -m venv venv && \
