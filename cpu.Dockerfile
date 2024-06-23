@@ -1,21 +1,12 @@
 # syntax = docker/dockerfile:experimental
-FROM debian:latest
-
+FROM python:latest
 
 WORKDIR /app
 
-RUN --mount=type=cache,target=/var/cache/apt \
-    apt update && \
-    apt install -y git aria2 python3 python3-pip python3-venv
-
-RUN git clone https://github.com/comfyanonymous/ComfyUI /app/ComfyUI && \
-    git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
+COPY ./ComfyUI/requirements.txt /app/ComfyUI/requirements.txt
 
 RUN --mount=type=cache,target=/root/.cache/pip \
-    python3 -m venv venv && \
-    . venv/bin/activate && \
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && \
+    pip install opencv-python torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu && \
     pip install -r ComfyUI/requirements.txt
 
-
-CMD venv/bin/python3 ComfyUI/main.py --listen --port ${PORT:-7680}
+CMD python3 ComfyUI/main.py --listen --port ${PORT:-7680}
