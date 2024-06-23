@@ -4,11 +4,7 @@ services:
       context: .
       dockerfile: cpu.Dockerfile
     volumes:
-      - ./models:/app/ComfyUI/models
-      - ./input:/app/ComfyUI/input
-      - ./output:/app/ComfyUI/output
-      - ./custom_nodes:/app/ComfyUI/custom_nodes
-      - ./web:/app/ComfyUI/web
+      - ./ComfyUI:/app/ComfyUI
     ports:
       - "7680:${PORT:-7680}"
     devices:
