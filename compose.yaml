@@ -1,5 +1,6 @@
+name: comfyui
 services:
-  comfyui:
+  main:
     build: .
     ports:
       - "7680:${PORT:-7680}"

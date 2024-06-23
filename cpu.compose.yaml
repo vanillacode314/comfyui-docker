@@ -1,5 +1,6 @@
+name: comfyui
 services:
-  comfyui:
+  main:
     build: 
       context: .
       dockerfile: cpu.Dockerfile
