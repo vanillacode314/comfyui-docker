@@ -6,7 +6,7 @@ services:
     volumes:
       - ./ComfyUI:/app/ComfyUI
     ports:
-      - "7680:${PORT:-7680}"
+      - "7860:${PORT:-7860}"
     devices:
       - "/dev/dri:/dev/dri"
     restart: unless-stopped

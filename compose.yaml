@@ -2,7 +2,7 @@ services:
   main:
     build: .
     ports:
-      - "7680:${PORT:-7680}"
+      - "7860:${PORT:-7860}"
     volumes:
       - ./ComfyUI:/app/ComfyUI
     deploy:
