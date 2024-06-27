@@ -5,7 +5,7 @@ services:
       dockerfile: cpu.Dockerfile
     container_name: comfyui-main
     environment:
-      - COMFYUI_PATH=/app/ComfyUI
+      - COMFYUI_PATH=${COMFYUI_PATH:-/app/ComfyUI}
     volumes:
       - ./ComfyUI:/app/ComfyUI
     ports:
@@ -21,6 +21,7 @@ services:
     volumes:
       - ./cfg:/cfg
       - ./ComfyUI:/w
+    restart: unless-stopped
 
     stop_grace_period: 15s  # thumbnailer is allowed to continue finishing up for 10s after the shutdown signal
     healthcheck:
