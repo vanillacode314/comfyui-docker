@@ -1,9 +1,29 @@
-#! /bin/sh
+#!/bin/bash
 
 set -e
 
 if [ ! -d "/app/ComfyUI/.git" ]; then
 	git clone https://github.com/comfyanonymous/ComfyUI
+	if [ -n "$DOWNLOAD_FLUX" ]; then
+		mkdir -p \
+			/app/ComfyUI/models/clip \
+			/app/ComfyUI/models/vae \
+			/app/ComfyUI/models/unet
+		aria2c -x16 <<-EOF
+			https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.sft
+				--dir /app/ComfyUI/models/unet
+				--out flux1-schnell.sft
+			https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.sft
+				--dir /app/ComfyUI/models/vae
+				--out ae.sft
+			https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+				--dir /app/ComfyUI/models/clip
+				--out clip_l.safetensors
+			https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+				--dir /app/ComfyUI/models/clip
+				--out t5xxl_fp8_e4m3fn.safetensors
+		EOF
+	fi
 	git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
 	# Dependencies for frequently-used
 	# (Do this firstly so PIP won't be solving too many deps at one time)
