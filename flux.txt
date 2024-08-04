@@ -1,6 +1,9 @@
-https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.sft
+# https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.sft
+# 	dir=/app/ComfyUI/models/unet
+# 	out=flux1-schnell.sft
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.sft
 	dir=/app/ComfyUI/models/unet
-	out=flux1-schnell.sft
+	out=flux1-dev.sft
 https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.sft
 	dir=/app/ComfyUI/models/vae
 	out=ae.sft
