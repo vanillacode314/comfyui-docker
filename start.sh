@@ -2,11 +2,12 @@
 
 set -e
 
-DOWNLOAD_FLUX=1
+DOWNLOAD_FLUX=0
 
 if [ ! -d "/app/ComfyUI/.git" ]; then
 	git clone https://github.com/comfyanonymous/ComfyUI
-	if [ -n "$DOWNLOAD_FLUX" ]; then
+	if [ $DOWNLOAD_FLUX -eq 1 ]; then
+		echo "INFO: Downloading Flux..."
 		mkdir -p \
 			/app/ComfyUI/models/clip \
 			/app/ComfyUI/models/vae \
@@ -14,8 +15,7 @@ if [ ! -d "/app/ComfyUI/.git" ]; then
 		aria2c -s16 -x16 --input-file flux.txt
 	fi
 	git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
-	# Dependencies for frequently-used
-	# (Do this firstly so PIP won't be solving too many deps at one time)
+	# Install all deps at the same time
 	uv pip install --system \
 		-r /app/ComfyUI/requirements.txt \
 		-r https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt \
