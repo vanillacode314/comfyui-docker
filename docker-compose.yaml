@@ -1,22 +1,23 @@
 services:
   main:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: comfyui-main
     environment:
       - COMFYUI_PATH=${COMFYUI_PATH:-/app/ComfyUI}
+      - DOWNLOAD_FLUX=0
     volumes:
       - ./ComfyUI:/app/ComfyUI
     ports:
       - "7860:${PORT:-7860}"
     deploy:
-       resources:
-         reservations:
-           devices:
-             - driver: nvidia
-               count: all
-               capabilities: [gpu]
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     devices:
       - "/dev/dri:/dev/dri"
     restart: unless-stopped

@@ -1,11 +1,12 @@
 services:
   main:
-    build: 
+    build:
       context: .
-      dockerfile: cpu.Dockerfile
+      dockerfile: Dockerfile.cpu
     container_name: comfyui-main
     environment:
       - COMFYUI_PATH=${COMFYUI_PATH:-/app/ComfyUI}
+      - DOWNLOAD_FLUX=1
     volumes:
       - ./ComfyUI:/app/ComfyUI
     ports:

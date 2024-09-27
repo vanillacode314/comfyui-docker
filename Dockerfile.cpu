@@ -8,8 +8,8 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
 
 RUN uv venv
 
-RUN --mount=type=cache,target=/root/.cache/pip\
-  uv pip install pip insightface opencv-python torch==2.3.1+cu121 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121\
+RUN --mount=type=cache,target=/root/.cache/pip\ 
+  uv pip install pip insightface opencv-python torch==2.3.1+cpu torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu\
   -r https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt\
   -r https://raw.githubusercontent.com/crystian/ComfyUI-Crystools/main/requirements.txt\
   -r https://raw.githubusercontent.com/cubiq/ComfyUI_essentials/main/requirements.txt\
@@ -24,5 +24,5 @@ RUN --mount=type=cache,target=/root/.cache/pip\
 
 COPY ./start.sh .
 COPY ./flux.txt .
-ENTRYPOINT [ "/bin/bash", "./start.sh" ]
-CMD [ "--disable-cuda-malloc" ]
+ENTRYPOINT ["/bin/bash","./start.sh"]
+CMD ["--cpu"]

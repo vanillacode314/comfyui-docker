@@ -1,12 +1,12 @@
-# https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.sft
-# 	dir=/app/ComfyUI/models/unet
-# 	out=flux1-schnell.sft
-https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.sft
+https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors
 	dir=/app/ComfyUI/models/unet
-	out=flux1-dev.sft
-https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.sft
+	out=flux1-schnell.safetensors
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors
+	dir=/app/ComfyUI/models/unet
+	out=flux1-dev.safetensors
+https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
 	dir=/app/ComfyUI/models/vae
-	out=ae.sft
+	out=ae.safetensors
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
 	dir=/app/ComfyUI/models/clip
 	out=clip_l.safetensors
