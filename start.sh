@@ -29,7 +29,7 @@ if [ $DOWNLOAD_FLUX -eq 1 ]; then
     /app/ComfyUI/models/clip \
     /app/ComfyUI/models/vae \
     /app/ComfyUI/models/unet
-  aria2c -s16 -x16 --auto-file-renaming=false --allow-overwrite=false --input-file flux.txt
+  aria2c -s16 -x16 --auto-file-renaming=false --allow-overwrite=false --input-file flux.txt || true
 fi
 
 python3 /app/ComfyUI/main.py --listen --port "${PORT:-7860}" "$@"
