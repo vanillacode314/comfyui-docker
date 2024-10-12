@@ -4,7 +4,7 @@ FROM ghcr.io/astral-sh/uv:debian-slim
 WORKDIR /app
 
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
-  apt-get update -y && apt-get install libgl1 libgl1-mesa-glx aria2 git clang build-essential python3-dev -y
+  apt-get update -y && apt-get install libglib2.0-0 libgl1 libgl1-mesa-glx aria2 git clang build-essential python3-dev -y
 
 RUN uv venv
 

@@ -6,22 +6,24 @@ source /app/.venv/bin/activate
 
 if [ ! -d "/app/ComfyUI/.git" ]; then
   git clone https://github.com/comfyanonymous/ComfyUI
-  git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
-
-  python3 /app/ComfyUI/custom_nodes/ComfyUI-Manager/cm-cli.py install \
-    ComfyUI-Custom-Scripts \
-    ComfyUI_Comfyroll_CustomNodes \
-    ComfyUI_UltimateSDUpscale \
-    ComfyUI-Crystools \
-    SimpleWildcardsComfyUI \
-    ComfyUI-Inspire-Pack \
-    ComfyUI-Impact-Pack \
-    efficiency-nodes-comfyui \
-    rgthree-comfy \
-    comfyui-reactor-node \
-    ComfyUI_essentials \
-    comfyui_controlnet_aux
 fi
+if [ ! -d "/app/ComfyUI/custom_nodes/ComfyUI-Manager/.git" ]; then
+  git clone https://github.com/ltdrdata/ComfyUI-Manager /app/ComfyUI/custom_nodes/ComfyUI-Manager
+fi
+
+python3 /app/ComfyUI/custom_nodes/ComfyUI-Manager/cm-cli.py install \
+  ComfyUI-Custom-Scripts \
+  ComfyUI_Comfyroll_CustomNodes \
+  ComfyUI_UltimateSDUpscale \
+  ComfyUI-Crystools \
+  SimpleWildcardsComfyUI \
+  ComfyUI-Inspire-Pack \
+  ComfyUI-Impact-Pack \
+  efficiency-nodes-comfyui \
+  rgthree-comfy \
+  comfyui-reactor-node \
+  ComfyUI_essentials \
+  comfyui_controlnet_aux
 
 mkdir -p \
   /app/ComfyUI/models/clip \

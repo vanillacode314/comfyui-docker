@@ -6,6 +6,7 @@ services:
     container_name: comfyui-main
     environment:
       - COMFYUI_PATH=${COMFYUI_PATH:-/app/ComfyUI}
+      - COMFYUI_MODEL_PATH=${COMFYUI_MODEL_PATH:-${COMFYUI_PATH}/models}
       - DOWNLOAD_FLUX=0
     volumes:
       - ./ComfyUI:/app/ComfyUI
