@@ -24,4 +24,5 @@ RUN --mount=type=cache,target=/root/.cache/pip\
 
 COPY ./start.sh .
 COPY ./flux.txt .
+COPY ./models.txt .
 ENTRYPOINT ["/bin/bash","./start.sh"]

@@ -23,13 +23,17 @@ if [ ! -d "/app/ComfyUI/.git" ]; then
     comfyui_controlnet_aux
 fi
 
+mkdir -p \
+  /app/ComfyUI/models/clip \
+  /app/ComfyUI/models/vae \
+  /app/ComfyUI/models/checkpoints \
+  /app/ComfyUI/models/unet
+
 if [ $DOWNLOAD_FLUX -eq 1 ]; then
   echo "INFO: Downloading Flux..."
-  mkdir -p \
-    /app/ComfyUI/models/clip \
-    /app/ComfyUI/models/vae \
-    /app/ComfyUI/models/unet
   aria2c -s16 -x16 --auto-file-renaming=false --allow-overwrite=false --continue=true --input-file flux.txt || true
 fi
+
+aria2c -s16 -x16 --auto-file-renaming=false --allow-overwrite=false --continue=true --input-file models.txt || true
 
 python3 /app/ComfyUI/main.py --listen --port "${PORT:-7860}" "$@"
