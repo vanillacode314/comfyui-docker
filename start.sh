@@ -23,6 +23,7 @@ python3 /app/ComfyUI/custom_nodes/ComfyUI-Manager/cm-cli.py install \
   rgthree-comfy \
   comfyui-reactor-node \
   ComfyUI_essentials \
+  ComfyUI-GGUF \
   comfyui_controlnet_aux
 
 mkdir -p \
