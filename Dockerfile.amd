@@ -11,7 +11,9 @@ ENV UV_LINK_MODE=copy
 ENV PATH="/app/.venv/bin:$PATH"
 
 RUN uv venv
-RUN --mount=type=cache,target=/root/.cache/uv uv pip install pip comfy-cli torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm6.2.4 -r https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt
+RUN --mount=type=cache,target=/root/.cache/uv uv pip install pip comfy-cli torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm6.2.4 \
+  -r https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt \
+  -r https://raw.githubusercontent.com/Comfy-Org/ComfyUI-Manager/master/requirements.txt
 
 COPY ./start.sh .
 COPY ./flux.txt .

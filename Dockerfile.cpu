@@ -10,7 +10,7 @@ ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,target=/root/.cache/uv uv venv
+RUN uv venv
 RUN --mount=type=cache,target=/root/.cache/uv uv pip install comfy-cli pip torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu \
   -r https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt \
   -r https://raw.githubusercontent.com/Comfy-Org/ComfyUI-Manager/master/requirements.txt
